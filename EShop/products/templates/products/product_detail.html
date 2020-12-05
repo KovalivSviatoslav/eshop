@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ block.super }} - {{ product.name }}
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'products/css/product_detail.css' %}">
+{% endblock%}
+
+{% block content %}
+<div class="background-style"></div>
+<main>
+    <div class="container position-relative product_detail_container">
+        <div class="row pt-2">
+            <div class="col-lg-6">
+                <div class="slider-wrapper">
+                    <div class="main-slide mb-3">
+                        <div class="main-slide__item">
+                            <img data-lazy="{{ product.main_imageURL }}" class="img-fluid" alt="product" />
+                        </div>
+                        {% for image in product.gallery.all %}
+                        <div class="main-slide__item">
+                            <img data-lazy="{{ image.slideURL }}" class="img-fluid" alt="product" />
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="slider-nav mx-5">
+                        <div class="slider-nav__item">
+                            <img src="{{ product.main_imageURL }}" class="img-fluid" alt="Фото {{ product.name }}">
+                        </div>
+                        {% for image in product.gallery.all %}
+                        <div class="slider-nav__item">
+                            <img src="{{ image.slideURL }}" class="img-fluid" alt="Фото {{ product.name }}">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-right-0 border-top-0 border-left-0 product-detail">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h2>{{ product.name }}</h3>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="price">{{ product.price }} ₴</span>
+                        </li>
+                        <li class="list-group-item">
+                            <form action="">
+                                <div class="add-to-cart form-group row mx-0">
+                                    <button type="button" class="btn btn-secondary float-left btn-cart"
+                                        data-toggle="modal" data-target="#productDetailModal" product_data='{{ product.get_json_data }}'>
+                                        <img src="{% static 'main/svg/shopping-basket.svg' %}" alt="basket">
+                                        <span>ДОБАВИТИ В КОРЗИНУ</span>
+                                    </button>
+                                    <!-- Modal -->
+                                    {% include 'products/includes/product_add_modal.html' %}
+                                </div>
+                            </form>
+                        </li>
+                        <li class="list-group-item detail-description">
+                            <h5>Описання</h5>
+                            <p class="text-muted">{{ product.description }}</p>
+                        </li>
+                        <li class="list-group-item">
+                            <p>
+                                <b>Наявність:</b>
+                                <span class="text-muted avalibility">
+                                    {% if product.is_active %}
+                                    В наявності
+                                    {% else %}
+                                    Немає на складі :(
+                                    {% endif %}
+                                </span>
+                            </p>
+                            <p>
+                                <b>Категорія:</b>
+                                {% for category in product.categories.all %}
+                                {% if category.is_child_node %}
+                                <a href="{{ category.parent.get_absolute_url}}" alt='{{ category.parent.name }}'>
+                                    <span class="text-muted category">{{ category.parent.name }},</span>
+                                </a>
+                                {% endif %}
+                                <a href="{{ category.get_absolute_url}}" alt='{{ category.name }}'>
+                                    <span class="text-muted category">{{ category.name }}</span>
+                                </a>
+                                {% endfor %}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'products/js/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'products/js/slider_settings.js' %}"></script>
+{% endblock %}

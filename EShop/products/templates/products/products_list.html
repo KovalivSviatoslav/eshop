@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ block.super }} - Список товарів
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static  'products/css/products_list.css' %}">
+{% endblock%}
+
+{% block content %}
+<main>
+    <div class="container">
+        <div class="row" style="background: #363636; color: #ffffff;">
+            <div class="col text-center py-3">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-9 pl-0">
+                <div class="row">
+                    {% for product in products %}
+                    <div class="col-md-6 col-xl-4 mb-4">
+                        <div class="card border-0 product-card">
+                            <a href="{{ product.get_absolute_url }}" class="mx-auto">
+                                <img src="{{ product.main_imageURL }}" class="card-img-top mb-3 product-card-img"
+                                    alt="product">
+                            </a>
+                            <form class="d-flex justify-content-between px-2">
+                                <a href="{{ product.get_absolute_url }}" type="button"
+                                    class="btn btn-secondary btn-sm w-100 mr-2">Детальніше</a>
+                                <button type="button" class="btn btn-secondary btn-sm w-100 ml-2 btn-cart"
+                                    product_data='{{ product.get_json_data }}' data-toggle="modal"
+                                    data-target="#productDetailModal">
+                                    <img src="{% static 'main/svg/shopping-basket.svg' %}" alt="cart">
+                                    <span>В КОРЗИНУ</span>
+                                </button>
+                            </form>
+                            <div class="list-group border border-top-0">
+                                <div class="card-body">
+                                    <a href="{{ product.get_absolute_url }}">
+                                        <h5 class="text-center">{{ product.name }}</h5>
+                                    </a>
+                                </div>
+                                <div class="card-footer border-dark mx-2 px-0">
+                                    <span class="float-right price">{{ product.price }} ₴</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-3 pr-0">
+                <div style="width: 100%; height: 90%; background: gray;"></div>
+            </div>
+        </div>
+    </div>
+    {% include 'products/includes/product_add_modal.html' %}
+</main>
+{% endblock %}

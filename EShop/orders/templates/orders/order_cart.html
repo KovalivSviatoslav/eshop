@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ block.super }} - Корзина
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-lg-12 px-0">
+                <a href="{% url 'products_list_url' %}" class="btn outline-dark">Продовжити покупку</a>
+
+                <br>
+                <br>
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            <h5>Товарів в корзині: <strong> n </strong></h5>
+                        </th>
+                        <th>
+                            <h5>Загальна вартість: <strong> n </strong></h5>
+                        </th>
+                        <th>
+                            <a href="{% url 'order_checkout_url' %}" class="btn btn-success float-right">Оформити
+                                замовлення</a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 px-0">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">img</th>
+                            <th scope="col">Товар</th>
+                            <th scope="col">Ціна</th>
+                            <th scope="col">Кількість</th>
+                            <th scope="col">Вартість</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="col"></td>
+                            <td scope="col">---</td>
+                            <td scope="col">---</td>
+                            <td scope="col">---</td>
+                            <td scope="col">---</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</main>
+{% endblock %}
