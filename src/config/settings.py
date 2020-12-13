@@ -39,11 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mptt',
-    'phonenumber_field',
+
     'products',
     'orders',
+
+    'mptt',
+    'phonenumber_field',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'EShop.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATE_DIR = BASE_DIR / "templates"
 
@@ -77,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'EShop.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database

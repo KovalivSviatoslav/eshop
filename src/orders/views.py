@@ -20,8 +20,6 @@ def order_checkout(request):
         form = CustomerForm(request.POST)
         sub_form = OrderForm(request.POST)
         data = json.loads(request.POST['Cart'])
-        print(request.POST)
-        print(form.is_valid(), sub_form.is_valid())
         if form.is_valid() and sub_form.is_valid():
             order = sub_form.save(commit=False)
             order.customer = form.save()

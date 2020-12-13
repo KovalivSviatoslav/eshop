@@ -16,8 +16,8 @@ def product_slide_uploader(instance, filename):
 # Create your models here.
 class Product(models.Model):
     """Товар"""
-    name = models.CharField(max_length=60, null=True, db_index=True, verbose_name='назва')
-    slug = models.SlugField(max_length=60, unique=True)
+    name = models.CharField(max_length=200, null=True, db_index=True, verbose_name='назва')
+    slug = models.SlugField(max_length=200, unique=True)
     main_image = models.ImageField(upload_to=product_main_image_uploader, verbose_name='основне фото', blank=False, null=True)
     description = models.TextField(blank=True, db_index=True, verbose_name='опис')
     manufacturer = models.ForeignKey(

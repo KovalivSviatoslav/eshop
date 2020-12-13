@@ -4,9 +4,10 @@
 __pycache__
 .env
 venv
-/EShop/static/products/images/
 .DS_Store
 .idea
+/eshop/static/products/images/
+/test_media
 psd
 EShop_diagram.drawio
 EShop_diagram.jpg
