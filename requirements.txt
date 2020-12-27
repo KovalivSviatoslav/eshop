@@ -3,7 +3,7 @@ Django==3.1.4
 django-js-asset==1.2.2
 django-mptt==0.11.0
 django-phonenumber-field==5.0.0
-phonenumbers==8.12.14
+phonenumbers==8.12.15
 Pillow==8.0.1
 psycopg2-binary==2.8.6
 python-decouple==3.3

@@ -8,6 +8,7 @@ venv
 .idea
 /eshop/static/products/images/
 /test_media
+/src/media
 psd
 EShop_diagram.drawio
 EShop_diagram.jpg

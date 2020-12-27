@@ -35,6 +35,6 @@ def order_checkout(request):
             all_product_in_order = order.productinorder_set.all()
             order.total_price = sum([product.total_price for product in all_product_in_order])
             order.save()
-        return HttpResponse('response :)')
+        return HttpResponse('response :)', status=200)
     else:
         return render(request, 'orders/order_checkout.html', context)

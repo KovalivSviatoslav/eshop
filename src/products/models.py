@@ -6,11 +6,11 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 # Image-nav
 def product_main_image_uploader(instance, filename):
-    return f'static/products/images/{instance.manufacturer.name}/{instance.id}/{filename}'
+    return f'products/{instance.manufacturer.name}/{filename}'
 
 
 def product_slide_uploader(instance, filename):
-    return f'static/products/images/{instance.product.manufacturer.name}/{instance.product.id}/{filename}'
+    return f'products/{instance.product.manufacturer.name}/{filename}'
 
 
 # Create your models here.
@@ -88,7 +88,7 @@ class ProductManufacturer(models.Model):
     name = models.CharField(max_length=60, unique=True, verbose_name='назва')
     description = models.TextField(blank=True, verbose_name='опис')
     logo = models.ImageField(
-        upload_to='static/products/images/manufacturer_logo/', verbose_name='завантажити', blank=True, null=True
+        upload_to=f'manufacturer_logo/', verbose_name='завантажити', blank=True, null=True
     )
 
     def __str__(self):
