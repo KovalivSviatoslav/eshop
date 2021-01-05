@@ -9,10 +9,3 @@ venv
 /src/media/
 /test_media
 /db_data
-*.swj
-*.swk
-*.swl
-*.swm
-*.swn
-*.swo
-*.swp

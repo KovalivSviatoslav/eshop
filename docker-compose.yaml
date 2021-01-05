@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   eshop_db:
-    image: postgres:13
+    image: postgres:13-alpine
     container_name: eshop_db
     ports:
       - 5435:5432/tcp
@@ -21,7 +21,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: eshop_backend
-    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+    command: "python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./src:/usr/app/backend
       - ./src/media:/usr/app/backend/media

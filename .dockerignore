@@ -7,8 +7,8 @@ __pycache__
 .git
 README.md
 .env
-/src/media/
-/db_data
+src/media/
+db_data
 test_media
 venv
 Dockerfile
